@@ -1,3 +1,4 @@
+# RawPHP documentation
 
 RawPHP is easy to install.
 You just need a web server and a copy of RawPHP, that’s it! 
