@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Slim-Website
 
 This is the repository for the Slim website at www.slimframework.com.
@@ -37,3 +38,7 @@ To change any CSS, edit the appropriate files in `assets\less` and then run:
 
 You can also run `grunt watch` to automatically rebuild when you make CSS
 changes.
+=======
+# RawPHP-docs
+This is the documentation for RawPHP Framework 
+>>>>>>> c4cf8d08ba38ce3930f51629a53d8b8831de714b
