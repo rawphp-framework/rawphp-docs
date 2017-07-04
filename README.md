@@ -1,5 +1,6 @@
 # RawPHP documentation
-
+This is the documentation for (RawPHP Framework](https://github.com/daveozoalor/RawPHP-framework), a very powerful and robust framework that let's you write laravel, cakephp, slim and php code inside it. It still lighter and faster than many of the base frameworks it was built with. It let's individuals with different PHP backgrounds work effectively and efficiently on the same project, same controllers and same views!
+ 
 RawPHP is easy to install.
 You just need a web server and a copy of RawPHP, that’s it! 
 RawPHP runs on different web servers such as Microsoft IIS, nginx, LightHTTPD.
