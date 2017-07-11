@@ -70,11 +70,18 @@ Below is an example of the AuthMiddleware that comes default with RawPHP.
 ```
 <?php 
 
-namespace App\Middlewares; 
+namespace App\Middlewares;
 
 class AuthMiddleware extends Middleware{
 	
-	
+	/**
+	* Check if user is logged and redirect appropriately
+	* @param Request $request
+	* @param Response $response
+	* @param $next
+	* 
+	* @return
+	*/
 	public function __invoke($request, $response, $next){
 		
 		if(!$this->container->auth->check()){
