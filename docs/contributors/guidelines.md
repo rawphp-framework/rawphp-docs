@@ -2,11 +2,11 @@
 title: Contributor Guidelines
 ---
 
-I encourage everyone to contribute to the RawPHP Framework project. You can find the latest code on GitHub at <https://github.com/daveozoalor/RawPHP-frameworks>.
+I encourage everyone to contribute to the RawPHP Framework project. You can find the latest code on GitHub at <https://github.com/daveozoalor/RawPHP-framework>.
 
 ## Issue Tracker
 
-You can find outstanding issues on the [GitHub Issue Tracker](https://github.com/daveozoalor/RawPHP-frameworks/issues). If you intend to work on a specific issue, leave a comment on the appropriate thread to inform other project contributors.
+You can find outstanding issues on the [GitHub Issue Tracker](https://github.com/daveozoalor/RawPHP-framework/issues). If you intend to work on a specific issue, leave a comment on the appropriate thread to inform other project contributors.
 
 ## Pull Requests
 
