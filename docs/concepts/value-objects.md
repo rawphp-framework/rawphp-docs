@@ -2,14 +2,13 @@
 title: PSR 7 and Value Objects
 ---
 
-Slim supports [PSR-7](https://github.com/php-fig/http-message) interfaces for
-its Request and Response objects. This makes Slim flexible because it can
-use _any_ PSR-7 implementation. For example, a Slim application
-route does not _have_ to return an instance of `\Slim\Http\Response`. It could,
-for example, return an instance of `\GuzzleHttp\Psr7\CachingStream` or any instance
+RawPHP supports [PSR-7](https://github.com/php-fig/http-message) interfaces for
+its Request and Response objects. This makes RawPHP flexible because it can
+use _any_ PSR-7 implementation. 
+For example, a RawPHP application can return an instance of `\GuzzleHttp\Psr7\CachingStream` or any instance
 returned by the `\GuzzleHttp\Psr7\stream_for()` function.
 
-Slim provides its own PSR-7 implementation so that it works out of the box. However,
+RawPHP provides its own PSR-7 implementation so that it works out of the box. However,
 you are free to replace Slim's default PSR 7 objects with a third-party implementation.
 Just override the application container's `request` and `response` services so
 they return an instance of `\Psr\Http\Message\ServerRequestInterface` and
@@ -17,7 +16,7 @@ they return an instance of `\Psr\Http\Message\ServerRequestInterface` and
 
 ## Value objects
 
-Slim's Request and Response objects are [_immutable value objects_](http://en.wikipedia.org/wiki/Value_object).
+RawPHP's Request and Response objects are [_immutable value objects_](http://en.wikipedia.org/wiki/Value_object).
 They can be "changed" only by requesting a cloned version that has updated
 property values. Value objects have a nominal overhead because they must be
 cloned when their properties are updated. This overhead does not affect
@@ -28,17 +27,17 @@ interface methods (these methods typically have a `with` prefix). For example,
 a PSR 7 Response object has a `withHeader($name, $value)` method that returns a
 cloned value object with the new HTTP header.
 
-{% highlight php %}
+`routes/routes.php`
+
+```
 <?php
-$app = new \Slim\App;
 $app->get('/foo', function ($req, $res, $args) {
     return $res->withHeader(
         'Content-Type',
         'application/json'
     );
 });
-$app->run();
-{% endhighlight %}
+```
 
 The PSR 7 interface provides these methods to transform Request and Response
 objects:
