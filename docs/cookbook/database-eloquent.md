@@ -1,77 +1,65 @@
 ---
-title: Using Eloquent with Slim
+title: Using Laravel's Eloquent or CakePHP's ORM with RawPHP
 ---
 
-You can use a database ORM such as [Eloquent](https://laravel.com/docs/5.1/eloquent) to connect your SlimPHP application to a database.
+You can use a database ORM such as [CakePHP's ORM](https://book.cakephp.org/3.0/en/orm.html) or [Eloquent](https://laravel.com/docs/5.1/eloquent) to connect your RawPHP application to a database. 
+This article will teach how to set them up, for how to perform different database queries follow the link above to readup it up on their web pages depending on which of them you choose to use.
 
-## Adding Eloquent to your application
+RawPHP comes with Laravel enabled by default, to use CakePHP ORM, you just have to turn it on. You can have both of them turned on at the same time, which means you can write both Cakephp and Laravel ORM in the same controller methods. Awesome, isn't it?
 
-<figure>
-{% highlight bash %}
-composer require illuminate/database "~5.1"
-{% endhighlight %}
-<figcaption>Figure 1: Add Eloquent to your application.</figcaption>
-</figure>
+
+
+# Adding Laravel Eloquent and CakePHP's ORM to your application
+Steps:
+* Specify the database details in `config/DatabaseConfig.php`
+* Enable them in  `config/DatabaseConfig.php`. Laravel is enabled by default, to enable CakePHP just uncomment it.
+* Import them in the Model files you wish to use eg. 
 
 ## Configure Eloquent
 
-Add the database settings to Slim's settings array.
+Specify your database settings `config/DatabaseConfig.php` . Note that Laravel and CakePHP use different settings, to use both of them, just fill the same database details in both. This does not create the connection, so it is advised that you enter the same details in both of them even if you'll eventually use only one of them.
 
-<figure>
-{% highlight php %}
-<?php
-return [
-    'settings' => [
-        // Slim Settings
-        'determineRouteBeforeAppMiddleware' => false,
-        'displayErrorDetails' => true,
-        'db' => [
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'database' => 'database',
-            'username' => 'user',
-            'password' => 'password',
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-        ]
-    ],
-];
-{% endhighlight %}
-<figcaption>Figure 2: Settings array.</figcaption>
-</figure>
+Laravel uses the `DB` by default, CakePHP uses `CakeDB` as the name as specified below:
 
-In your `dependencies.php` or wherever you add your Service Factories:
+`config/DatabaseConfig.php`
 
-<figure>
-{% highlight php %}
-// Service factory for the ORM
-$container['db'] = function ($container) {
-    $capsule = new \Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($container['settings']['db']);
+```
+<?php 
 
-    $capsule->setAsGlobal();
-    $capsule->bootEloquent();
+/**
+* 
+* Database settings
+* 
+*/
+$app = new \Slim\App([
+	'settings' => [
+		'displayErrorDetails' => true,
+	//Database definition
+	'db' => [
+		'driver' => 'mysql',
+		'host'=> 'localhost',
+		'database' => 'raw-php',
+		'username' => 'root',
+		'password' => '',
+		'charset' => 'utf8',
+		'collation' => 'utf8_unicode_ci',
+		'prefix' => '',
+	],
+	'cakeDB' => [
+		'className' => 'Cake\Database\Connection',
+		'driver' => 'Cake\Database\Driver\Mysql',
+		'database' => 'raw-php',
+		'username' => 'root',
+		'password' => '',
+		'cacheMetadata' => false // If set to `true` you need to install the optional "cakephp/cache" package. 'composer require cakephp/cache'
 
-    return $capsule;
-};
-{% endhighlight %}
-<figcaption>Figure 3: Configure Eloquent.</figcaption>
-</figure>
+	]
+  ]
+]);
 
-## Pass a controller an instance of your table
+```
 
-<figure>
-{% highlight php %}
-$container[App\WidgetController::class] = function ($c) {
-    $view = $c->get('view');
-    $logger = $c->get('logger');
-    $table = $c->get('db')->table('table_name');
-    return new \App\WidgetController($view, $logger, $table);
-};
-{% endhighlight %}
-<figcaption>Figure 4: Pass table object into a controller.</figcaption>
-</figure>
+
 
 ## Query the table from a controller
 
