@@ -6,7 +6,9 @@ title: Lifecycle
 
 ### 1. Instantiation
 
-First, you instantiate the `\Slim\App` class. This is the Slim application object. During instantiation, Slim registers default services for each application dependency. The application constructor accepts an optional settings array that configures the application's behavior.
+The entry point for all requests to a RawPHP application is the `public/index.php` file. All requests are directed to this file by your web server (Apache / Nginx) configuration. The `index.php` file doesn't contain much code. Rather, it is simply a starting point for loading the rest of the framework.
+
+The `index.php` file loads the Composer generated autoloader definition, and then retrieves an instance of the RawPHP application from `bootstrap/app.php` script. The first action taken by RawPHP itself is to create an instance of the application / [service container](/docs/{{version}}/container).
 
 ### 2. Route Definitions
 
