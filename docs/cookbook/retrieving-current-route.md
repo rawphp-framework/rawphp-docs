@@ -9,21 +9,28 @@ From there you can get the route's name by using `getName()` or get the methods 
  Note: If you need to access the route from within your app middleware you must set `'determineRouteBeforeAppMiddleware'` to true in your configuration otherwise `getAttribute('route')` will return null. Also `getAttribute('route')` will return null on non existent routes.
 
 Example:
-{% highlight php %}
-use Slim\App;
-use Slim\Exception\NotFoundException;
-use Slim\Http\Request;
-use Slim\Http\Response;
-
+In your `config/databaseConfig.php`, add the following setting to the 'settings' option
+```
 $app = new App([
     'settings' => [
+       'displayErrorDetails' => true,
         // Only set this if you need access to route within middleware
-        'determineRouteBeforeAppMiddleware' => true
+        'determineRouteBeforeAppMiddleware' => true //add this
     ]
 ]);
+```
 
-// routes...
-$app->add(function (Request $request, Response $response, callable $next) {
+
+Then create a middleware file for it in `app/Middlewares/`
+
+```
+<?php 
+
+namespace App\Middlewares;
+
+class CurrentRouteMiddleware extends Middleware{
+	
+function __invoke(Request $request, Response $response, callable $next) {
     $route = $request->getAttribute('route');
 
     // return NotFound for non existent route
@@ -39,5 +46,13 @@ $app->add(function (Request $request, Response $response, callable $next) {
     // do something with that information
 
     return $next($request, $response);
-});
-{% endhighlight %}
+}
+}
+```
+
+Then add it to the list of middlewares in `config/MiddlewareConfig.php` 
+
+```
+$app->add(new \App\Middlewares\CurrentRouteMiddleware($container));
+
+```
