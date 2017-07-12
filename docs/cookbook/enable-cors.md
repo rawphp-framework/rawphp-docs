@@ -135,7 +135,7 @@ $app->post("/api/{id}", function($request, $response, $arguments) {
 $app->map(["DELETE", "PATCH"], "/api/{id}", function($request, $response, $arguments) {
 });
 ```
-// Pay attention to this when you are using some javascript front-end framework and you are using groups in slim php
+// Pay attention to this when you are using some javascript front-end framework and you are using groups in RawPHP
 ```
 $app->group('/api', function () {
     // Due to the behaviour of browsers when sending PUT or DELETE request, you must add the OPTIONS method. Read about preflight.
