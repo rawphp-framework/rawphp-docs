@@ -12,10 +12,10 @@ RawPHP comes with Laravel enabled by default, to use CakePHP ORM, you just have 
 # Adding Laravel Eloquent and CakePHP's ORM to your application
 Steps:
 * Specify the database details in `config/DatabaseConfig.php`
-* Enable them in  `config/DatabaseConfig.php`. Laravel is enabled by default, to enable CakePHP just uncomment it.
+* Enable them in  `config/ORMConfig.php`. Laravel is enabled by default, to enable CakePHP just uncomment it.
 * Import them in the Model files you wish to use eg. `User.php`
 
-## Configure Eloquent
+## Specify the database details in `config/DatabaseConfig.php`
 
 Specify your database settings `config/DatabaseConfig.php` . Note that Laravel and CakePHP use different settings, to use both of them, just fill the same database details in both. This does not create the connection, so it is advised that you enter the same details in both of them even if you'll eventually use only one of them.
 
@@ -59,75 +59,122 @@ $app = new \Slim\App([
 
 ```
 
+## Enable your prefered ORM in  `config/ORMConfig.php`.
+Here is an example of what `config/ORMConfig.php`looks like by default. Laravel is enabled by default, to enable CakePHP too, just uncomment it.
+
+```
+<?php 
+
+//use the src/config/DatabaseConfig.php file in
+
+//load laravel eloquent
+$capsule = new \Illuminate\Database\Capsule\Manager;
+//add new database connection 
+$capsule->addConnection($container['settings']['db']);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
 
+/**
+* Load CakePHP ORM
+* Uncomment the below to start using CakePHP ORM, there will be no conflict
+* 
+*/
+
+/*
+//load  cakephp ORM
+$capsule = new Cake\Datasource\ConnectionManager;
+
+$capsule->setConfig('default', $container['settings']['cakeDB']);
+
+*/
+```
+
+## Import the enabled ORM(s) into your model 
+ere is a sample model setup in `app/Models/User.php`
+```
+<?php 
+namespace App\Models;
+
+ 
+/**
+* Extend eloquent model class 
+* read more https://laravel.com/docs/5.1/eloquent
+*/
+use Illuminate\Database\Eloquent\Model;
+/**
+* To enable CakePHP's ORM, uncomment the line below
+ Read more => https://book.cakephp.org/3.0/en/orm.html 
+*/
+
+//use Cake\ORM\TableRegistry; 
+
+class User extends Model
+{
+	
+	//optional: define table name if different from 'users'
+	protected $table = 'users';
+	
+	protected $fillable = [
+		'first_name',
+		'last_name',
+		'email',
+		'password'
+	];
+	
+	public function setPassword($password){
+		$this->update([
+			'password' => password_hash($password, PASSWORD_DEFAULT),
+		]);
+	}
+	
+}
+```
 ## Query the table from a controller
+With the above setup, you can then use it in your controller like so: 
+* Import your Model(s) 
+* Start writing ORM queries anywhere in your controller
+ 
+Here is a sample controller that comes with RawPHP out of the box `app/Controllers/AuthController'
 
-<figure>
-{% highlight php %}
+```
 <?php
 
-namespace App;
+namespace App\Controllers\Auth;
+use App\Controllers\Controller;
+use App\Models\User; <= Import your user model, it already has laravel and cakephp ORM imported
+use Respect\Validation\Validator as v; 
 
-use Slim\Views\Twig;
-use Psr\Log\LoggerInterface;
-use Illuminate\Database\Query\Builder;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+class AuthController extends Controller{
+	
+	//Sample method to receive post request and sign a user up
+	//Inside it you can write both cakePHP and Laravel ORM without any conflicts
+	public function postSignup($request , $response){
+		
+		}
+	}
 
-class WidgetController
-{
-    private $view;
-    private $logger;
-    protected $table;
-
-    public function __construct(
-        Twig $view,
-        LoggerInterface $logger,
-        Builder $table
-    ) {
-        $this->view = $view;
-        $this->logger = $logger;
-        $this->table = $table;
-    }
-
-    public function __invoke(Request $request, Response $response, $args)
-    {
-        $widgets = $this->table->get();
-
-        $this->view->render($response, 'app/index.twig', [
-            'widgets' => $widgets
-        ]);
-
-        return $response;
-    }
-}
-{% endhighlight %}
-<figcaption>Figure 5: Sample controller querying the table.</figcaption>
-</figure>
+```
 
 ### Query the table with where
 
-<figure>
-{% highlight php %}
+Below are some examples demonstrating the type of queries you can run inside your controller using laravel or cakephp ORM
+
+ Query searching for names matching foo.
 ...
-$records = $this->table->where('name', 'like', '%foo%')->get();
+$records = $this->DB->where('name', 'like', '%foo%')->get();
 ...
-{% endhighlight %}
-<figcaption>Figure 6: Query searching for names matching foo.</figcaption>
-</figure>
+
 
 ### Query the table by id
-
-<figure>
-{% highlight php %}
+Selecting a row based on id
 ...
 $record = $this->table->find(1);
 ...
-{% endhighlight %}
-<figcaption>Figure 7: Selecting a row based on id.</figcaption>
-</figure>
+
 
 ## More information
 
-[Eloquent](https://laravel.com/docs/5.1/eloquent) Documentation
+Discover more queries you can run :
+* Laravel => [Eloquent](https://laravel.com/docs/5.1/eloquent) Documentation
+* CakePHP => [CakePHP's ORM](https://book.cakephp.org/3.0/en/orm.html)
