@@ -12,10 +12,11 @@ Each RawPHP Framework application has a default Not Allowed handler. This handle
 
 A RawPHP Framework application's Not Allowed handler is a Pimple service. You can substitute your own Not Allowed handler by defining a custom Pimple factory method with the application container.
 
-````
-$c['notAllowedHandler'] = function ($c) {
-    return function ($request, $response, $methods) use ($c) {
-        return $c['response']
+in your `config/ContainerConfig.php`
+```
+$container['notAllowedHandler'] = function ($container) {
+    return function ($request, $response, $methods) use ($container) {
+        return $container['response']
             ->withStatus(405)
             ->withHeader('Allow', implode(', ', $methods))
             ->withHeader('Content-type', 'text/html')
@@ -24,7 +25,7 @@ $c['notAllowedHandler'] = function ($c) {
 };
 ```
 
-> **N.B** Check out [Not Found](/docs/handlers/not-found.html) docs for pre-slim creation method using a new instance of `\Slim\Container`
+**N.B** Also check out [Not Found](/docs/handlers/not-found.html) docs 
 
 In this example, we define a new `notAllowedHandler` factory that returns a callable. The returned callable accepts three arguments:
 
