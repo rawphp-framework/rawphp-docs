@@ -20,15 +20,16 @@ RawPHP
 The `slimphp/Slim-HttpCache` component contains a service provider and an application
 middleware. You should add both to your application like this:
 
-Add the below to `config/ContainerCongig.php`
+Add the below to `config/ContainerConfig.php`
 ```
 // Register service provider with the container
 $container['cache'] = function () {
     return new \Slim\HttpCache\CacheProvider();
+    }
 ```
 
 // Add middleware to the application
-Add the below to `config/MiddlewareCongig.php`
+Add the below to `config/MiddlewareConfig.php`
 `$app->add(new \Slim\HttpCache\Cache('public', 86400));`
 
 
