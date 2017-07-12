@@ -13,7 +13,7 @@ RawPHP comes with Laravel enabled by default, to use CakePHP ORM, you just have 
 Steps:
 * Specify the database details in `config/DatabaseConfig.php`
 * Enable them in  `config/DatabaseConfig.php`. Laravel is enabled by default, to enable CakePHP just uncomment it.
-* Import them in the Model files you wish to use eg. 
+* Import them in the Model files you wish to use eg. `User.php`
 
 ## Configure Eloquent
 
