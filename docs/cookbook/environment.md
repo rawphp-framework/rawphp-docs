@@ -2,15 +2,15 @@
 title: Getting and Mocking the Environment
 ---
 
-The Environment object encapsulates the `$_SERVER` superglobal array and decouples the Slim application from the PHP global environment. Decoupling the Slim application from the PHP global environment lets us create HTTP requests that may (or may not) resemble the global environment. This is particuarly useful for unit testing and initiating sub-requests. You can fetch the current Environment object anywhere in your Slim application like this:
+The Environment object encapsulates the `$_SERVER` superglobal array and decouples the RawPHP application from the PHP global environment. Decoupling the RawPHP application from the PHP global environment lets us create HTTP requests that may (or may not) resemble the global environment. This is particuarly useful for unit testing and initiating sub-requests. You can fetch the current Environment object anywhere in your RawPHP application like this:
 
-{% highlight php %}
+```
 $environment = $app['environment'];
-{% endhighlight %}
+```
 
 ## Environment Properties
 
-Each Slim application has an Environment object with various properties that determine application behavior. Many of these properties mirror those found in the `$_SERVER` superglobal array. Some properties are required. Other properties are optional.
+Each RawPHP application has an Environment object with various properties that determine application behavior. Many of these properties mirror those found in the `$_SERVER` superglobal array. Some properties are required. Other properties are optional.
 
 ### Required Properties
 
@@ -60,9 +60,10 @@ AUTH_TYPE
 
 ## Mock Environments
 
-Each Slim application instantiates an Environment object using information from the current global environment. However, you may also create mock environment objects with custom information. Mock Environment objects are only useful when writing unit tests.
+Each RawPHP application instantiates an Environment object using information from the current global environment. However, you may also create mock environment objects with custom information. Mock Environment objects are only useful when writing unit tests.
 
-{% highlight php %}
+In your `bootstrap/app` file, you can paste the following
+```
 $env = \Slim\Http\Environment::mock([
     'REQUEST_METHOD' => 'PUT',
     'REQUEST_URI' => '/foo/bar',
@@ -71,4 +72,4 @@ $env = \Slim\Http\Environment::mock([
     'CONTENT_TYPE' => 'application/json;charset=utf8',
     'CONTENT_LENGTH' => 15
 ]);
-{% endhighlight %}
+```
