@@ -3,11 +3,8 @@ title: Documentation
 ---
 
 
-<div class="alert alert-info">
-    <p>
-        This is the official documentation for <strong>[RawPHP Framework](https://github.com/daveozoalor/RawPHP-framework)</strong>. 
-    </p>
-</div>
+        This is the official documentation for <strong>[RawPHP Framework](https://github.com/daveozoalor/RawPHP-framework)
+  
 
 
 ## Documentation 
