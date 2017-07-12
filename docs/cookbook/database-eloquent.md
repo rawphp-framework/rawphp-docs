@@ -158,6 +158,21 @@ Selecting a row based on id
 $record = $this->table->find(1);
 ...
 
+### Load some data from your Articles table using CakePHP's ORM
+For example if we wanted to load some data from our articles table we could do:
+
+```
+use Cake\ORM\TableRegistry;
+
+$articles = TableRegistry::get('Articles');
+
+$query = $articles->find();
+
+foreach ($query as $row) {
+    echo $row->title;
+    }
+
+```
 
 ## More information
 
