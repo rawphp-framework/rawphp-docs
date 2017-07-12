@@ -2,8 +2,11 @@
 title: Application
 ---
 
+The RawPHP application has different component parts. The application is started from the `public/index.php` file. Then ther `routes/routes.php` file handles the rest of the requests
 
-// Add route callbacks
+
+// Route callbacks
+In `routes/routes.php`
 ```
 $app->get('/', function ($request, $response, $args) {
     return $response->withStatus(200)->write('Hello World!');
