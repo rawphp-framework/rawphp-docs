@@ -14,8 +14,9 @@ only one uploaded file will be returned for the input name by `getUploadedFiles(
 
 Below is an example HTML form that contains both single and multiple file uploads.
 
-<figure>
-{% highlight php %}
+## Example HTML form for file uploads
+
+```
 <!-- make sure the attribute enctype is set to multipart/form-data -->
 <form method="post" enctype="multipart/form-data">
     <!-- upload of a single file -->
@@ -40,29 +41,18 @@ Below is an example HTML form that contains both single and multiple file upload
     <p>
         <input type="submit"/>
     </p>
-</form>
-{% endhighlight %}
-<figcaption>Figure 1: Example HTML form for file uploads</figcaption>
-</figure>
+    ```
 
 Uploaded files can be moved to a directory using the `moveTo` method. Below is an example application
 that handles the uploaded files of the HTML form above.
 
-<figure>
-{% highlight php %}
+##  RawPHP applcation to handle the uploaded files
+
+In your `routes/routes.php` , you can use a closure or you can write the code inside your controller file and reference it. Below is an example 
+
+
+```
 <?php
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-use Slim\Http\Request;
-use Slim\Http\Response;
-use Slim\Http\UploadedFile;
-
-$app = new \Slim\App();
-
-$container = $app->getContainer();
-$container['upload_directory'] = __DIR__ . '/uploads';
-
 $app->post('/', function(Request $request, Response $response) {
     $directory = $this->get('upload_directory');
 
@@ -120,11 +110,8 @@ function moveUploadedFile($directory, UploadedFile $uploadedFile)
     return $filename;
 }
 
-$app->run();
-{% endhighlight %}
-<figcaption>Figure 2: Example Slim applcation to handle the uploaded files</figcaption>
-</figure>
+```
 
 See also
 --------
-* [https://akrabat.com/psr-7-file-uploads-in-slim-3/](https://akrabat.com/psr-7-file-uploads-in-slim-3/)
+* [Akrabat File Upload Sample/](https://akrabat.com/psr-7-file-uploads-in-slim-3/)
