@@ -2,7 +2,7 @@
 title: First Application Walkthrough
 ---
 
-Creating a new RawPHP simply starts with installing it first. So go through the installation instructions of RawPHP before continuing this tutorial. 
+Creating a new RawPHP application simply starts with installing it first. So go through the [installation instructions](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/start/installation.md)  of RawPHP before continuing this tutorial. 
 The installation comes with a complete working user authentication system. In this tutorial, we will add a blogging feature to it. 
 
 ## Quick over view
@@ -20,24 +20,106 @@ The image below depicts the process described above, not different from other PH
 ![image](https://user-images.githubusercontent.com/1010556/28173197-9460642a-67e5-11e7-915f-2957253c592c.png)
 
 
-## Getting Set Up
+## Getting started
 
-Start by making a folder for your project (mine is called `project`, because naming things is hard).  I like to reserve the top level for things-that-are-not-code and then have a folder for source code, and a folder inside that which is my webroot, so my initial structure looks like this:
+### Install RawPHP 
+Follow the [installation instructions](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/start/installation.md) here to get a copy of RawPHP on your local machine.
+
+### Folder Structure 
+Below is the foloder structure of RawPHP. The important subdolders have been expanded.
+```
+├── app
+│   └── Auth
+│   └── Controllers
+│   └── Middlewares
+│   └── Models
+│   └── Validation
+├── bootstrap
+├── config
+├── public
+├── resources
+│   └── views
+│       └── auth
+│       └── templates
+├── routes
+├── uploads
+├── vendor
+├── .htaccess
+├── composer.json
+├── composer.lock
+├── CONTRIBUTING.md
+├── readme.md
+```
+
+### Database setup
+Following the RawPHP installation instructions, you must have setup your database correctly. In this section, you have to add the the posts table to the database. Below is the sql dump to run on your database management system to create your database.
 
 ```
-.
-├── project
-│   └── src
-│       └── public
+
+--
+-- Table structure for table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `modified_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+```
+Running the above mysql query, will create the posts table for you. Your database should already have a `users` table.
+
+### Creating a Model
+Now we have to create the posts model. Go to `app/Models/` and create `Post.php` file.  Paste the below inside it. 
+
+```
+<?php 
+namespace App\Models;
+
+//At least one of the below ORM's must be enabled
+
+/**
+* Extend eloquent model class 
+* read more https://laravel.com/docs/5.1/eloquent
+*/
+use Illuminate\Database\Eloquent\Model;
+/**
+* To enable CakePHP's ORM, uncomment the line below
+ Read more => https://book.cakephp.org/3.0/en/orm.html 
+*/
+
+//use Cake\ORM\TableRegistry; 
+
+
+class User extends Model
+{
+	
+	//optional: define table name if different from 'users'
+	protected $table = 'users';
+	
+	protected $fillable = [
+		'title',
+		'body',
+		'user_id',
+	];
+	
+	
+	
+}
 ```
 
-### Installing Slim Framework
+That's all we need for now to get our application running.
 
-[Composer](https://getcomposer.org) is the best way to install Slim Framework.  If you don't have it already, you can follow the [installation instructions](https://getcomposer.org/download/), in my project I've just downloaded the `composer.phar` into my `src/` directory and I'll use it locally.  So my first command looks like this (I'm in the `src/` directory):
+### Creating a controller
+We have to create the `PostsController.php` file inside `app/Controllers/`. We will be adding two methods inside it. One for retrieving the list of posts, the other for adding new posts. Paste the below inside it. 
 
-    php composer.phar require slim/slim
 
-This does two things:
+
 
 * Add the Slim Framework dependency to `composer.json` (in my case it creates the file for me as I don't already have one, it's safe to run this if you do already have a `composer.json` file)
 * Run `composer install` so that those dependencies are actually available to use in your application
