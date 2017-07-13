@@ -13,7 +13,7 @@ This is the official documentation for <strong>[RawPHP Framework](https://github
 
 ### Concepts
   * [PSR 7](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/concepts/value-objects.md)
-  * [Middleware](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/concepts/middleware)
+  * [Middleware](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/concepts/middleware.md)
   * [Dependency Container](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/concepts/di.md)
   
 ### The Application
@@ -90,9 +90,7 @@ before venturing into specific topics like request and response handling,
 routing, and error handling.
 
 [symfony](http://symfony.com/)
+[CakePHP](http://cakephp.org/)
 [laravel](http://laravel.com/)
-[csrf](https://github.com/slimphp/Slim-Csrf/)
 [httpcache](https://github.com/slimphp/Slim-HttpCache)
-[flash](https://github.com/slimphp/Slim-Flash)
-[eloquent](http://laravel.com/docs/5.1/eloquent)
 [doctrine](http://www.doctrine-project.org/projects/orm.html)
