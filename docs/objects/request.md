@@ -424,3 +424,31 @@ $app->get('/test', function ($request, $response, $args) {
 ```
 
 The request object also has bulk functions as well. `$request->getAttributes()` and `$request->withAttributes()`
+
+
+
+
+### Easy URL Building with Named Routes
+
+When we create a route, we can give it a name by calling `->setName()` on the route object.  In this case, I am adding the name to the route that lets me view an individual ticket so that I can quickly create the right URL for a ticket by just giving the name of the route, so my code now looks something like this (just the changed bits shown here):
+
+```
+$app->get('/ticket/{id}', function (Request $request, Response $response, $args) {
+    // ...
+})->setName("ticket-detail");
+```
+
+To use this in my template, I need to make the router available in the template that's going to want to create this URL, so I've amended the `tickets/` route to pass a router through to the template by changing the render line to look like this:
+
+```
+    $response = $this->view->render($response, "tickets.phtml", ["tickets" => $tickets, "router" => $this->router]);
+```
+
+With the `/tickets/{id}` route having a friendly name, and the router now available in our template, this is what makes the `pathFor()` call in our template work.  By supplying the `id`, this gets used as a named placeholder in the URL pattern, and the correct URL for linking to that route with those values is created.  This feature is brilliant for readable template URLs and is even better if you ever need to change a URL format for any reason - no need to grep templates to see where it's used.  This approach is definitely recomended, especially for links you'll use a lot.
+
+## Where Next?
+
+This article gave a walkthrough of how to get set up with a simple application of your own, which I hope will let you get quickly started, see some working examples, and build something awesome.
+
+From here, I'd recommend you take a look at the other parts of the project documentation for anything you need that wasn't already covered or that you want to see an alternative example of.  A great next step would be to take a look at the [Middleware](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/concepts/middleware) section - this technique is how we layer up our application and add functionality such as authentication which can be applied to multiple routes.
+
