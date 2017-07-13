@@ -25,7 +25,10 @@ Create a new database in your database manager. Enter the database details in `c
 In the root folder of the installed RawPHP application, you will see a `rawphp-database.sql` file. Run it in your newly created database.
 You can read up more about this step in the [Database section](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/database-eloquent.md)
 
-## Running your RawPHP 
+## Running your RawPHP application 
 Navigate into your newly installed RawPHP folder, open a command prompt from there and run `php -S localhost:8000` or  `php -S localhost:8000 -t public`. 
 Then go to your browser and visit `localhost:8000`.
 
+## Take the blog tutorial
+
+To get a quick grip around RawPHP, you can take the [RawPHP Blog Tutorial](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/tutorial/first-app.md)
