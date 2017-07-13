@@ -8,7 +8,7 @@ You can define application routes using proxy methods on the `RawPHP` instance. 
 
 ### GET Route
 
-You can add a route that handles only `GET` HTTP requests with the Slim
+You can add a route that handles only `GET` HTTP requests with the RawPHP
 application's `get()` method. It accepts two arguments:
 
 1. The route pattern (with optional named placeholders)
@@ -22,7 +22,7 @@ $app->get('/books/{id}', function ($request, $response, $args) {
 
 ### POST Route
 
-You can add a route that handles only `POST` HTTP requests with the Slim
+You can add a route that handles only `POST` HTTP requests with the RawPHP
 application's `post()` method. It accepts two arguments:
 
 1. The route pattern (with optional named placeholders)
@@ -36,7 +36,7 @@ $app->post('/books', function ($request, $response, $args) {
 
 ### PUT Route
 
-You can add a route that handles only `PUT` HTTP requests with the Slim
+You can add a route that handles only `PUT` HTTP requests with the RawPHP
 application's `put()` method. It accepts two arguments:
 
 1. The route pattern (with optional named placeholders)
@@ -49,7 +49,7 @@ $app->put('/books/{id}', function ($request, $response, $args) {
 ```
 ### DELETE Route
 
-You can add a route that handles only `DELETE` HTTP requests with the Slim
+You can add a route that handles only `DELETE` HTTP requests with the RawPHP
 application's `delete()` method. It accepts two arguments:
 
 1. The route pattern (with optional named placeholders)
@@ -63,7 +63,7 @@ $app->delete('/books/{id}', function ($request, $response, $args) {
 
 ### OPTIONS Route
 
-You can add a route that handles only `OPTIONS` HTTP requests with the Slim
+You can add a route that handles only `OPTIONS` HTTP requests with the RawPHP
 application's `options()` method. It accepts two arguments:
 
 1. The route pattern (with optional named placeholders)
@@ -77,7 +77,7 @@ $app->options('/books/{id}', function ($request, $response, $args) {
 
 ### PATCH Route
 
-You can add a route that handles only `PATCH` HTTP requests with the Slim
+You can add a route that handles only `PATCH` HTTP requests with the RawPHP
 application's `patch()` method. It accepts two arguments:
 
 1. The route pattern (with optional named placeholders)
@@ -91,7 +91,7 @@ $app->patch('/books/{id}', function ($request, $response, $args) {
 
 ### Any Route
 
-You can add a route that handles all HTTP request methods with the Slim application's `any()` method. It accepts two arguments:
+You can add a route that handles all HTTP request methods with the RawPHP application's `any()` method. It accepts two arguments:
 
 1. The route pattern (with optional named placeholders)
 2. The route callback
@@ -111,7 +111,7 @@ $app->any('/user', 'MyRestfulController');
 
 ### Custom Route
 
-You can add a route that handles multiple HTTP request methods with the Slim application's `map()` method. It accepts three arguments:
+You can add a route that handles multiple HTTP request methods with the RawPHP application's `map()` method. It accepts three arguments:
 
 1. Array of HTTP methods
 2. The route pattern (with optional named placeholders)
