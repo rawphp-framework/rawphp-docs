@@ -2,11 +2,23 @@
 title: First Application Walkthrough
 ---
 
-If you're looking for a tour through all the ingredients for setting up a very simple Slim application (this one doesn't use Twig, but does use Monolog and a PDO database connection) then you're in the right place.  Either walk through the tutorial to build the example application, or adapt each step for your own needs.
+Creating a new RawPHP simply starts with installing it first. So go through the installation instructions of RawPHP before continuing this tutorial. 
+The installation comes with a complete working user authentication system. In this tutorial, we will add a blogging feature to it. 
 
-Before you start: There is also a [skeleton project](https://github.com/slimphp/Slim-Skeleton) which will give you a quick-start for a sample application, so use that if you'd rather just have something working rather than exploring how all the moving parts work.
+## Quick over view
+The steps to adding a new feature/module to your RawPHP application. Files are not just named anyhow in RawPHP. RawPHP follows the standard naming convention of the most popular PHP frameworks so as to blend in perfectly.
 
-> This tutorial walks through building an example application.  The [code for the application is available](https://github.com/slimphp/Tutorial-First-Application) if you want to refer to it.
+* First create the table in your database. Lets call it `posts` table. Note that all database names must be small caps and plural.
+* Create a model file for it in `app/Models/Post.php`. Note that all model names must be Capitalized and singular. 
+* Create the controller file for it `app/Controller/PostsController.php`. All controller names must be Capitalized, plural and end with the suffix of `Controller.php`.
+Inside your controller, you'll create several methods that will handle the several different pages to be displayed to the user. There is an example further down this page. An example of a method would be `public function displayPostsFromActiveUsers() { ...}`.
+* Create the routes the user has to enter in the browser to access the page in `routes/routes.php`.
+* Create the different files for 
+
+The image below depicts the process described above, not different from other PHP frameworks. To developers using a framework for the first time, this might seem like alot. But practicing it once will demystify everything. It is actually the easiest way to build websites.
+
+![image](https://user-images.githubusercontent.com/1010556/28173197-9460642a-67e5-11e7-915f-2957253c592c.png)
+
 
 ## Getting Set Up
 
