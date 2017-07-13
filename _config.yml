@@ -101,3 +101,5 @@ defaults:
       type: "pages"
     values:
       layout: docs
+
+theme: jekyll-theme-cayman
