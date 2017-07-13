@@ -65,9 +65,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `body` text NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `modified_at` datetime NOT NULL,
+  `user_id` int(11) NULL,
+  `created_at` datetime NULL,
+  `modified_at` datetime NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -108,7 +108,12 @@ class User extends Model
 		'user_id',
 	];
 	
-	
+	     /**
+	     * Indicates if the model should be timestamped.
+	     *
+	     * @var bool
+	     */
+   	 public $timestamps = false;
 	
 }
 ```
@@ -118,23 +123,115 @@ That's all we need for now to get our application running.
 ### Creating a controller
 We have to create the `PostsController.php` file inside `app/Controllers/`. We will be adding two methods inside it. One for retrieving the list of posts, the other for adding new posts. Paste the below inside it. 
 
+```
+<?php
+
+namespace App\Controllers;
+
+use App\Controllers\Controller;
+use App\Models\Post;
+use Respect\Validation\Validator as v; 
+
+class AuthController extends Controller{
+	
+	/**
+	* List all posts
+	* This uses Laravel's ORM , you can read up CakePHP's ORM to see how to accomplish the same thing using cake.
+	*/
+	public function getIndex($request , $response){
+		$posts = Post::all();
+		return $this->view->render($posts,'posts/index.twig');
+	}
+	
+	
+	/**
+	* Display the selected posts
+	* @return
+	*/
+	
+	public function getView($request , $response){
+	//get the id that was sent from the routes.php, and find the post in the database
+		$post = Post::find($request->getParam('id'));
+		
+		//pass the details to the view.twig file located in resources/posts/
+		return $this->view->render($post,'posts/view.twig');
+	}
+	
+	/**
+	* Display the add post page
+	* @return
+	*/
+	
+	public function getAdd($request , $response){
+		return $this->view->render($response,'posts/add.twig');
+	}
+	
+	
+	/**
+	* Create new post
+	* @return
+	*/
+	
+	public function postAdd($request , $response){
+		
+		//we need to validate input before submission
+		$validation = $this->validator->validate($request, [
+			'title' => v::notEmpty(),	
+			'body' => v::notEmpty()		
+		]);
+		
+		//redirect if validation fails
+		if($validation->failed()){
+			$this->flash->addMessage('error', 'Fields cannot be left empty'); //You can also use error, info, warning
+			return $response->withRedirect($this->router->pathFor('posts.add')); 
+		}
+		
+		//for now, we can just save the title and the body. Later on, we'll save the user_id too
+		$post = Post::create([
+			'title' => $request->getParam('first_name'),
+			'body' => $request->getParam('last_name')
+		]);
+		
+		$this->flash->addMessage('success', 'New post added successfully'); //You can also use error, info, warning
+		
+		return $response->withRedirect($this->router->pathFor('posts.index'));
+		
+	}
+}
+```
+Read more about how to perform different kinds of queries using (Laravel's ORM](https://laravel.com/docs/5.3/eloquent)  OR (CakePHP's ORM](https://book.cakephp.org/3.0/en/orm.html)
+
+### List the controller
+You have to list every controller you create in `config/ControllerConfig.php`. So at the bottom of the file, add the below:
+```
+$container['PostsController'] = function($container){
+	return new \App\Controllers\PostsController($container);
+};
+```
+
+### Create The Routes
+Now head over to `routes/routes.php` and add the following lines at the bottom of the file. 
+The `setName()` is optional if you know what you are doing. But in the code below, observe that only get requests use it.
+
+```
+//Receive a get request and display the index page
+$app->get('/posts/index', 'AuthController:getIndex')->setName('posts.index');
+
+//Display the post add page
+$app->get('/posts/add', 'AuthController:getAdd')->setName('posts.add');
+
+//Receive a post request and route it to the postAdd method in PostsController.php file
+$app->post('/posts/add', 'AuthController:PostAdd');
+
+
+//Display the specified post when a user visits and url like yourapp.com/posts/view/123
+$app->get('/posts/view/{id}', 'AuthController:getView')->setName('posts.add');
+```
 
 
 
-* Add the Slim Framework dependency to `composer.json` (in my case it creates the file for me as I don't already have one, it's safe to run this if you do already have a `composer.json` file)
-* Run `composer install` so that those dependencies are actually available to use in your application
 
-If you look inside the project directory now, you'll see that you have a `vendor/` folder with all the library code in it.  There are also two new files: `composer.json` and `composer.lock`.  This would be a great time to get our source control setup correct as well: when working with composer, we always exclude the `vendor/` directory, but both `composer.json` and `composer.lock` should be included under source control.  Since I'm using `composer.phar` in this directory I'm going to include it in my repo as well; you could equally install the `composer` command on all the systems that need it.
-
-To set up the git ignore correctly, create a file called `src/.gitignore` and add the following single line to the file:
-
-    vendor/*
-
-
-Now git won't prompt you to add the files in `vendor/` to the repository - we don't want to do this because we're letting composer manage these dependencies rather than including them in our source control repository.
-
-### Create The Application
-
+#
 There's a really excellent and minimal example of an `index.php` for Slim Framework on the [project homepage](http://www.slimframework.com) so we'll use that as our starting point.  Put the following code into `src/public/index.php`:
 
 {% highlight php %}
