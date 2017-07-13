@@ -1,7 +1,5 @@
 # RawPHP documentation
----
-title: Documentation
----
+
 This is the official documentation for <strong>[RawPHP Framework](https://github.com/daveozoalor/RawPHP-framework)
 
 ### Tutorial
@@ -15,67 +13,67 @@ This is the official documentation for <strong>[RawPHP Framework](https://github
   * [Deployment](https://github.com/daveozoalor/RawPHP-docs/docs/deployment/deployment.md)
 
 ### Concepts
-  * [PSR 7](https://github.com/daveozoalor/RawPHP-docs/docs/concepts/value-objects.md)
-  * [Middleware](https://github.com/daveozoalor/RawPHP-docs/docs/concepts/middleware)
-  * [Dependency Container](https://github.com/daveozoalor/RawPHP-docs/docs/concepts/di.md)
+  * [PSR 7](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/concepts/value-objects.md)
+  * [Middleware](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/concepts/middleware)
+  * [Dependency Container](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/concepts/di.md)
   
 ### The Application
-  * [Overview](https://github.com/daveozoalor/RawPHP-docs/docs/objects/application.md)
-  * [Configuration](https://github.com/daveozoalor/RawPHP-docs/docs/objects/application.md#application-configuration)
-  * [Default settings](https://github.com/daveozoalor/RawPHP-docs/docs/objects/application.md#slim-default-settings)
+  * [Overview](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/application.md)
+  * [Configuration](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/application.md#application-configuration)
+  * [Default settings](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/application.md#slim-default-settings)
   
 ### The Request
-  * [Overview](https://github.com/daveozoalor/RawPHP-docs/docs/objects/request.md)
-  * [Method](https://github.com/daveozoalor/RawPHP-docs/docs/objects/request.md)
-  * [Headers](https://github.com/daveozoalor/RawPHP-docs/docs/objects/request.md)
-  * [Body](https://github.com/daveozoalor/RawPHP-docs/docs/objects/request.md)
-  * [Uploaded Files](https://github.com/daveozoalor/RawPHP-docs/docs/objects/request.md)
-  * [Helpers](https://github.com/daveozoalor/RawPHP-docs/docs/objects/request.md)
-  * [Route object](https://github.com/daveozoalor/RawPHP-docs/docs/objects/request.md)
-  * [Media type parsers](https://github.com/daveozoalor/RawPHP-docs/docs/objects/request.md)
+  * [Overview](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/request.md)
+  * [Method](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/request.md)
+  * [Headers](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/request.md)
+  * [Body](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/request.md)
+  * [Uploaded Files](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/request.md)
+  * [Helpers](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/request.md)
+  * [Route object](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/request.md)
+  * [Media type parsers](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/request.md)
   
 ### The Response
-  * [Overview](https://github.com/daveozoalor/RawPHP-docs/docs/objects/response.md)
-  * [Status](https://github.com/daveozoalor/RawPHP-docs/docs/objects/response.md)
-  * [Headers](https://github.com/daveozoalor/RawPHP-docs/docs/objects/response.md)
-  * [Body](https://github.com/daveozoalor/RawPHP-docs/docs/objects/response.md)
-  * [JSON](https://github.com/daveozoalor/RawPHP-docs/docs/objects/response.md)
+  * [Overview](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/response.md)
+  * [Status](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/response.md)
+  * [Headers](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/response.md)
+  * [Body](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/response.md)
+  * [JSON](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/response.md)
   
 ### Routing
-  * [Overview](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
-  * [Create Routes](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
-  * [Callbacks](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
-  * [Strategies](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
-  * [Placeholders](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
-  * [Names](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
-  * [Groups](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
-  * [Middleware](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
-  * [Container Resolution](https://github.com/daveozoalor/RawPHP-docs/docs/objects/router.md)
+  * [Overview](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
+  * [Create Routes](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
+  * [Callbacks](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
+  * [Strategies](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
+  * [Placeholders](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
+  * [Names](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
+  * [Groups](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
+  * [Middleware](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
+  * [Container Resolution](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/objects/router.md)
   
 ### Error Handling
-  * [Error Handlers](https://github.com/daveozoalor/RawPHP-docs/docs/handlers/error.md)
-  * [404 Not Found](https://github.com/daveozoalor/RawPHP-docs/docs/handlers/not-found.md)
-  * [405 Not Allowed](https://github.com/daveozoalor/RawPHP-docs/docs/handlers/not-allowed.md)
-  * [PHP Runtime Error](https://github.com/daveozoalor/RawPHP-docs/docs/handlers/php-error.md)
+  * [Error Handlers](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/handlers/error.md)
+  * [404 Not Found](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/handlers/not-found.md)
+  * [405 Not Allowed](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/handlers/not-allowed.md)
+  * [PHP Runtime Error](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/handlers/php-error.md)
   
   ### Cook book
-  * [Trailing / in routes](https://github.com/daveozoalor/RawPHP-docs/docs/cookbook/route-patterns.md)
-  * [Retrieving IP address](https://github.com/daveozoalor/RawPHP-docs/docs/cookbook/ip-address.md)
-  * [Retrieving Current Route](https://github.com/daveozoalor/RawPHP-docs/docs/cookbook/retrieving-current-route.md)
-  * [Using Eloquent with RawPHP](https://github.com/daveozoalor/RawPHP-docs/docs/cookbook/database-eloquent.md)
-  * [Enabling CORS](https://github.com/daveozoalor/RawPHP-docs/docs/cookbook/enable-cors.md)
-  * [Getting and Mocking the Environment](https://github.com/daveozoalor/RawPHP-docs/docs/cookbook/emvironment.md)
-  * [Uploading Files using POST forms](https://github.com/daveozoalor/RawPHP-docs/docs/cookbook/uploading-files.md)
+  * [Trailing / in routes](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/route-patterns.md)
+  * [Retrieving IP address](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/ip-address.md)
+  * [Retrieving Current Route](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/retrieving-current-route.md)
+  * [Using Eloquent with RawPHP](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/database-eloquent.md)
+  * [Enabling CORS](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/enable-cors.md)
+  * [Getting and Mocking the Environment](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/emvironment.md)
+  * [Uploading Files using POST forms](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/uploading-files.md)
   
 ### Add Ons
-  * [Templates](https://github.com/daveozoalor/RawPHP-docs/docs/features/templates.md)
-  * [HTTP Caching](https://github.com/daveozoalor/RawPHP-docs/docs/features/caching.md)
-  * [CSRF Protection](https://github.com/daveozoalor/RawPHP-docs/docs/features/csrf.md)
-  * [Flash Messages](https://github.com/daveozoalor/RawPHP-docs/docs/features/flash.md)
+  * [Templates](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/features/templates.md)
+  * [HTTP Caching](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/features/caching.md)
+  * [CSRF Protection](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/features/csrf.md)
+  * [Flash Messages](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/features/flash.md)
 
 ### Contributing
-  * [Branching Strategy](https://github.com/daveozoalor/RawPHP-docs/docs/contributors/strategy.md)
-  * [Guidelines](https://github.com/daveozoalor/RawPHP-docs/docs/contributors/guidelines.md)
+  * [Branching Strategy](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/contributors/strategy.md)
+  * [Guidelines](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/contributors/guidelines.md)
 
 ## Bring your own components
 
