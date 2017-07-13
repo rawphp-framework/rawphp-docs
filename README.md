@@ -6,7 +6,6 @@ This is the official documentation for <strong>[RawPHP Framework](https://github
   [First Application](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/tutorial/first-app.md)
 
 ### Get Started
-  * [Home](https://github.com/daveozoalor/RawPHP-docs/docs)
   * [Installation](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/start/installation.md)
   * [Upgrade Guide](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/start/upgrade.md)
   * [Web Servers](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/start/web-servers.md)
