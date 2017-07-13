@@ -1,5 +1,4 @@
 # RawPHP documentation
-This is the documentation for [RawPHP Framework](https://github.com/daveozoalor/RawPHP-framework) 
 ---
 title: Documentation
 ---
