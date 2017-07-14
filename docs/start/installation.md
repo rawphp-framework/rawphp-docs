@@ -25,17 +25,24 @@ Create a new database in your database manager. Enter the database details in `c
 In the root folder of the installed RawPHP application, you will see a `rawphp-database.sql` file. Run it in your newly created database.
 You can read up more about this step in the [Database section](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/cookbook/database-eloquent.md)
 
+
+# Connect your database
+Your setup is not complete until you connect your database. 
+* In the root folder of your RawPHP application, you will see an sql file named `rawphp-database.sql`. Create a database in your database management system (eg. PHPMyadmin), then run that sql file to create a `users` table. 
+* Specify your database details in `config/DatabaseConfig.php`. You need to fill the same database details for the two database settings you will see in that file.
+
 ## Running your RawPHP application 
-Navigate into your newly installed RawPHP folder, open a command prompt from there and run `php -S localhost:8000` or  `php -S localhost:8000 -t public`. 
-Then go to your browser and visit `localhost:8000`.
+Navigate into your newly installed RawPHP folder, open a command prompt from there and run `php -S localhost:8001 -t public`. 
+Then go to your browser and visit `localhost:8001`. 
+Alternatively if you have a server like wampserver installed in your machine, you can install RawPHP in your server's root folder. In this case it is the www/. Start the server, then visit `localhost/your-rawphp-folder/public` on your browser.
+
+That's it, your RawPHP application should be up and running now.
+
+Next, you need to take the blog tutorial to get a good grip of RawPHP ASAP.
 
 ## Take the blog tutorial
 
 To get a quick grip around RawPHP, you can take the [RawPHP Blog Tutorial](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/tutorial/first-app.md)
-
-
-
-
 
 
 ### Run Your Application With PHP's Webserver
