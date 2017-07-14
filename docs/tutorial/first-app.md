@@ -2,7 +2,7 @@
 title: First Application Walkthrough
 ---
 
-Creating a new RawPHP application simply starts with installing it first. So go through the [installation instructions](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/start/installation.md)  of RawPHP before continuing this tutorial. 
+Creating a new RawPHP application simply starts with installing it first. So go through the [installation instructions](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/installation.md)  of RawPHP before continuing this tutorial. 
 The installation comes with a complete working user authentication system. In this tutorial, we will add a blogging feature to it. 
 
 ## Quick over view
@@ -23,7 +23,7 @@ The image below depicts the process described above, not different from other PH
 ## Getting started
 
 ### Install RawPHP 
-Follow the [installation instructions](https://github.com/daveozoalor/RawPHP-docs/blob/master/docs/start/installation.md) here to get a copy of RawPHP on your local machine.
+Follow the [installation instructions](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/installation.md) here to get a copy of RawPHP on your local machine.
 
 ### Folder Structure 
 Below is the foloder structure of RawPHP. The important subdolders have been expanded.
