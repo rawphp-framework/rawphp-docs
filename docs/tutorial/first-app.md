@@ -197,6 +197,46 @@ class AuthController extends Controller{
 		return $response->withRedirect($this->router->pathFor('posts.index'));
 		
 	}
+	
+	
+	/**
+	* Edit Post
+	* Unlike the getAdd() and postAdd() methods above, this method does the job of two of them
+	* By just checking if the request is a post or get request.
+	* On the routes/routes.php file, we need to use the map() function for this method instead of the usual get() or post()
+	*/
+	
+	public function edit($request , $response){
+		
+		
+		if($request->isPost()){
+		//we need to validate input before submission
+		$validation = $this->validator->validate($request, [
+			'title' => v::notEmpty(),	
+			'body' => v::notEmpty()		
+		]);
+		
+		//redirect if validation fails
+		if($validation->failed()){
+			$this->flash->addMessage('error', 'Fields cannot be left empty'); //You can also use error, info, warning
+			return $response->withRedirect($this->router->pathFor('posts.add')); 
+		}
+		
+		//for now, we can just save the title and the body. Later on, we'll save the user_id too
+		$post = Post::create([
+			'title' => $request->getParam('first_name'),
+			'body' => $request->getParam('last_name')
+		]);
+		
+		$this->flash->addMessage('success', 'New post added successfully'); //You can also use error, info, warning
+		
+		return $response->withRedirect($this->router->pathFor('posts.view',[$post->id]));
+		} 
+		
+		//request is not post, just display the page
+		return $this->view->render($response,'posts/edit.twig');	
+		
+	}
 }
 ```
 Read more about how to perform different kinds of queries using (Laravel's ORM](https://laravel.com/docs/5.3/eloquent)  OR (CakePHP's ORM](https://book.cakephp.org/3.0/en/orm.html)
@@ -224,6 +264,10 @@ $app->get('/posts/add', 'AuthController:getAdd')->setName('posts.add');
 $app->post('/posts/add', 'AuthController:PostAdd');
 
 
+//Receive a post request and route it to the postAdd method in PostsController.php file
+$app->map(['POST','GET'],'/posts/add', 'PostsController:edit');
+
+
 //Display the specified post when a user visits and url like yourapp.com/posts/view/123
-$app->get('/posts/view/{id}', 'AuthController:getView')->setName('posts.add');
+$app->get('/posts/view/{id}', 'AuthController:getView')->setName('posts.view');
 ```
