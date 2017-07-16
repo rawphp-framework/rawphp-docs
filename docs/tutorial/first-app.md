@@ -23,7 +23,7 @@ The image below depicts the process described above, not different from other PH
 ## Getting started
 
 ### Install RawPHP 
-Follow the [installation instructions](start/installation.md) here to get a copy of RawPHP on your local machine.
+Follow the [installation instructions](../start/installation.md) here to get a copy of RawPHP on your local machine.
 
 ### Folder Structure 
 Below is the foloder structure of RawPHP. The important subdolders have been expanded.
@@ -52,7 +52,7 @@ Below is the foloder structure of RawPHP. The important subdolders have been exp
 ```
 
 ### Database setup
-Following the RawPHP [installation instructions](start/installation.md), you must have setup your database correctly. In this section, you have to add the the posts table to the database. Below is the sql dump to run on your database management system to create your database.
+Following the RawPHP [installation instructions](../start/installation.md), you must have setup your database correctly. In this section, you have to add the the posts table to the database. Below is the sql dump to run on your database management system to create your database.
 
 ```
 
