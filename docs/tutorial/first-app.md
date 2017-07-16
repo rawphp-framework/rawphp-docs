@@ -188,8 +188,8 @@ class AuthController extends Controller{
 		
 		//for now, we can just save the title and the body. Later on, we'll save the user_id too
 		$post = Post::create([
-			'title' => $request->getParam('first_name'),
-			'body' => $request->getParam('last_name')
+			'title' => $request->getParam('title'),
+			'body' => $request->getParam('body')
 		]);
 		
 		$this->flash->addMessage('success', 'New post added successfully'); //You can also use error, info, warning
@@ -224,8 +224,8 @@ class AuthController extends Controller{
 		
 		//for now, we can just save the title and the body. Later on, we'll save the user_id too
 		$post = Post::create([
-			'title' => $request->getParam('first_name'),
-			'body' => $request->getParam('last_name')
+			'title' => $request->getParam('title'),
+			'body' => $request->getParam('body')
 		]);
 		
 		$this->flash->addMessage('success', 'New post added successfully'); //You can also use error, info, warning
@@ -236,6 +236,20 @@ class AuthController extends Controller{
 		//request is not post, just display the page
 		return $this->view->render($response,'posts/edit.twig');	
 		
+	}
+	
+	/**
+	* Delete post 
+	*
+	*/
+	public function delete($request , $response){
+	//find the post
+		$post = Post::find($request->getParam('id'));
+		//delete it
+		if($post->delete()){
+			$this->flash->addMessage('success', 'Post deleted successfully'); 
+			return $response->withRedirect($this->router->pathFor('posts.index'));
+		}
 	}
 }
 ```
