@@ -140,7 +140,7 @@ class AuthController extends Controller{
 	*/
 	public function getIndex($request , $response){
 		$posts = Post::all();
-		return $this->view->render($posts,'posts/index.twig');
+		return $this->view->render($response,'posts/index.twig', ['posts'=>$posts]);
 	}
 	
 	
@@ -154,7 +154,7 @@ class AuthController extends Controller{
 		$post = Post::find($request->getParam('id'));
 		
 		//pass the details to the view.twig file located in resources/posts/
-		return $this->view->render($post,'posts/view.twig');
+		return $this->view->render($response,'posts/view.twig', ['posts'=>$posts]);
 	}
 	
 	/**
