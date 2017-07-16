@@ -153,26 +153,6 @@ $app->get('/hello/{name}', function ($request, $response, $args) {
 });
 ```
 
-## Route strategies
-
-The route callback signature is determined by a route strategy. By default, Slim expects route callbacks to accept the request, response, and an array of route placeholder arguments. This is called the RequestResponse strategy. However, you can change the expected route callback signature by simply using a different strategy. As an example, Slim provides an alternative strategy called RequestResponseArgs that accepts request and response, plus each route placeholder as a separate argument. Here is an example of using this alternative strategy; simply replace the `foundHandler` dependency provided by the default `\Slim\Container`:
-
-in `config/ContainerConfig.php`
-```
-$c['foundHandler'] = function() {
-    return new \Slim\Handlers\Strategies\RequestResponseArgs();
-};
-```
-
-in `routes/routes.php`
-```
-$app->get('/hello/{name}', function ($request, $response, $name) {
-    return $response->write($name);
-});
-```
-
-You can provide your own route strategy by implementing the `\Slim\Interfaces\InvocationStrategyInterface`.
-
 ## Route placeholders
 
 Each routing method described above accepts a URL pattern that is matched against the current HTTP request URI. Route patterns may use named placeholders to dynamically match HTTP request URI segments.
@@ -234,7 +214,7 @@ $app->get('/users/{id:[0-9]+}', function ($request, $response, $args) {
 
 ## Route names
 
-Application routes can be assigned a name. This is useful if you want to programmatically generate a URL to a specific route with the router's `pathFor()` method. Each routing method described above returns a `\Slim\Route` object, and this object exposes a `setName()` method.
+Application routes can be assigned a name. This is useful if you want to programmatically generate a URL to a specific route with the router's `pathFor()` method. Each routing method described above returns a route object exposes a `setName()` method.
 
 ```
 $app->get('/hello/{name}', function ($request, $response, $args) {
@@ -258,7 +238,7 @@ The router's `pathFor()` method accepts two arguments:
 
 ## Route groups
 
-To help organize routes into logical groups, the `\Slim\App` also provides a `group()` method. Each group's route pattern is prepended to the routes or groups contained within it, and any placeholder arguments in the group pattern are ultimately made available to the nested routes:
+To help organize routes into logical groups, the RawPHP also provides a `group()` method. Each group's route pattern is prepended to the routes or groups contained within it, and any placeholder arguments in the group pattern are ultimately made available to the nested routes:
 
 ```
 $app->group('/users/{id:[0-9]+}', function () {
@@ -272,10 +252,10 @@ $app->group('/users/{id:[0-9]+}', function () {
 });
 ```
 
-Note inside the group closure, `$this` is used instead of `$app`. Slim binds the closure to the application instance for you, just like it is the case with route callback binds with container instance.
+Note inside the group closure, `$this` is used instead of `$app`. RawPHP binds the closure to the application instance for you, just like it is the case with route callback binds with container instance.
 
-* inside group closure, `$this` is bound to the instance of `Slim\App`
-* inside route closure, `$this` is bound to the instance of `Slim\Container`
+* inside group closure, `$this` is bound to the instance of `\App`
+* inside route closure, `$this` is bound to the instance of `\Container`
 
 ## Route middleware
 
@@ -283,11 +263,11 @@ You can also attach middleware to any route or route group. [Learn more](/docs/c
 
 ## Router caching
 
-It's possible to enable router cache by setting valid filename in default Slim settings. [Learn more](/docs/objects/application.html#slim-default-settings).
+It's possible to enable router cache by setting valid filename in default RawPHP settings. [Learn more](/docs/objects/application.html#rawphp-default-settings).
 
 ## Container Resolution
 
-You are not limited to defining a function for your routes. In Slim there are a few different ways to define your route action functions.
+You are not limited to defining a function for your routes. In RawPHP there are a few different ways to define your route action functions.
 
 In addition to a function, you may use:
 
@@ -296,7 +276,7 @@ In addition to a function, you may use:
  - An invokable class
  - `container_key`
  
-This functionality is enabled by Slim's Callable Resolver Class. It translates a string entry into a function call.
+This functionality is enabled by RawPHP's Callable Resolver Class. It translates a string entry into a function call.
 Example:
 
 ```
@@ -309,9 +289,9 @@ Alternatively, you can take advantage of PHP's `::class` operator which works we
 $app->get('/', \HomeController::class . ':home');
 ```
 
-In this code above we are defining a `/` route and telling Slim to execute the `home()` method on the `HomeController` class.
+In this code above we are defining a `/` route and telling RawPHP to execute the `home()` method on the `HomeController` class.
 
-Slim first looks for an entry of `HomeController` in the container, if it's found it will use that instance otherwise it will call it's constructor with the container as the first argument. Once an instance of the class is created it will then call the specified method using whatever Strategy you have defined.
+RawPHP first looks for an entry of `HomeController` in the container, if it's found it will use that instance otherwise it will call it's constructor with the container as the first argument. Once an instance of the class is created it will then call the specified method using whatever Strategy you have defined.
 
 ### Registering a controller with the container
 
@@ -350,7 +330,7 @@ inject specific dependencies into the controller.
 
 ### Allow RawPHP to instantiate the controller
 
-Alternatively, if the class does not have an entry in the container, then Slim
+Alternatively, if the class does not have an entry in the container, then RawPHP
 will pass the container's instance to the constructor. You can construct controllers 
 with many actions instead of an invokable class which only handles one action.
 
