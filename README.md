@@ -1,6 +1,6 @@
 # RawPHP documentation
 
-This is the official documentation for <strong>[RawPHP Framework](https://github.com/rawphp-framework/RawPHP-framework)
+This is the official documentation for [RawPHP Framework](https://github.com/rawphp-framework/RawPHP-framework)
 
 ### Tutorial
   [First Application](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/tutorial/first-app.md)
