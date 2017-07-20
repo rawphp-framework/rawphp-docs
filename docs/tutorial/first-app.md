@@ -317,60 +317,18 @@ In  `resources/views/posts/index.twig`. This page will simply display the list o
 		    {% endfor %}
 
 
-	<!-- Display user's profile picture. For now, its just a dummy image-->
-          <div class="col-md-5 col-lg-6 pull-left " >
-            <img src="{{ base_url()}}/img/icons/png/Infinity-Loop.png" alt="{{ user->last_name }}">
-            <h4>{{ user->first_name }} {{ user->last_name }}</h4>
-          </div>
-
-		<div class="col-md-6 col-lg-6 pull-right">
+			<ul class="media-list">
+			  <li class="media">
+			    <div class="media-body">
+			    <?php foreach($posts as $post) { ?>
+			      <h4 class="media-heading"> <a href="{{parth_for('posts.view')}}/{{ post->id }}" > {{ post->title }} </a></h4>
+			    <?php  } ?>
+			    </div>
+			  </li>
+			</ul>
 		
-		<h4><span class="fui-user"></span> User Profile</h4>
-
-          <div class="login-form" >
-          <form action="{{ path_for('auth.signup') }}" method="post" autocomplete="off"> 
-            <div class="form-group {{ errors.first_name ? 'has-error' : '' }}">
-              <input type="text" class="form-control login-field" value="{{ old.first_name }}"  name="first_name" placeholder="Enter your first name" id="login-first-name">
-              <label class="login-field-icon fui-user" for="login-first-name"></label>
-              {% if errors.first_name %}
-              	<span class="help-block">{{ errors.first_name | first }}</span>
-              {% endif %}
-            </div>
-            
-            <div class="form-group {{ errors.last_name ? 'has-error' : '' }}">
-              <input type="text" class="form-control login-field" value="{{ old.last_name }}"  name="last_name" placeholder="Enter your last name" id="login-last-name">
-              <label class="login-field-icon fui-user" for="login-last-name"></label>
-              
-               {% if errors.last_name %}
-              	<span class="help-block">{{ errors.last_name | first }}</span>
-              {% endif %}	
-            </div>
-            <div class="form-group {{ errors.email ? 'has-error' : '' }}">
-              <input type="email" class="form-control login-field" value="{{ old.email }}" name="email" placeholder="Enter your email" id="login-email">
-              <label class="login-field-icon fui-user" for="login-email"></label>
-              
-              {% if errors.email %}
-              	<span class="help-block">{{ errors.email | first }}</span>
-              {% endif %}	
-            </div>
-
-            <div class="form-group">
-              <input type="password" class="form-control login-field" value=""  name="password" placeholder="Password" id="login-pass">
-              <label class="login-field-icon fui-lock" for="login-pass"></label>
-              {% if errors.password %}
-              	<span class="help-block">{{ errors.password | first }}</span>
-              {% endif %}	
-            </div>
-
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Sign up</button>
-            
-             {{ csrf.field | raw }}
-            <a class="login-link" href="{{ path_for('auth.signin')}}">Login</a>
-            <a class="login-link" href="{{ path_for('auth.password.forgot')}}">Lost your password?</a>
-            </form>
-          </div>
-          </div>
-        </div>
+		
+		
 	{% endblock%}
 
 ```
