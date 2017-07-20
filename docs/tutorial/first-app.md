@@ -291,9 +291,10 @@ Now we have done all the background work, we need to build the front-end view th
 * Step 1: Create this folder `resources/views/posts`.
 Inside the folder, create the following files:
 * `index.twig`
+* `view.twig`
 * `add.twig`
 * `edit.twig`
-* `view.twig`
+
 
 ### Inserting the contents of the different view pages
 
@@ -333,4 +334,40 @@ In  `resources/views/posts/index.twig`. This page will simply display the list o
 
 ```
 
+Now we have displayed the list of posts, we have to create the `resources/views/posts/view.twig`. 
 
+```
+
+```
+{% extends 'templates/app.twig' %}
+
+	{% block content %}
+
+        <div class="col-md-12 col-lg-12 " >
+        
+        		<!-- Display Errors --> 
+			 {% for error in errors %}
+				{% for error_message in error %}
+		       		 <div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					   {{ error_message|e }}
+					</div>
+		    	{% endfor %}
+		    {% endfor %}
+
+
+			<ul class="media-list">
+			  <li class="media">
+			    <div class="media-body">
+			    <?php foreach($posts as $post) { ?>
+			      <h4 class="media-heading"> <a href="{{parth_for('posts.view')}}/{{ post->id }}" > {{ post->title }} </a></h4>
+			    <?php  } ?>
+			    </div>
+			  </li>
+			</ul>
+		
+		
+		
+	{% endblock%}
+
+```
