@@ -8,18 +8,19 @@ title: Installation
 * PHP 5.5 or newer
 
 ## How to Install Composer
-Don't have Composer? It's easy to install by following the instructions on their [download](https://getcomposer.org/download/) page.
 
-## How to Install RawPHP
+There are two ways to install RawPHP:
+* It's recommended that you use [Composer](https://getcomposer.org/download) to install RawPHP.
 
-We recommend you install RawPHP with [Composer](https://getcomposer.org/).
-Navigate into your project's root directory and execute the bash command
-shown below. This command downloads the RawPHP Framework and its third-party
-dependencies into your project's `vendor/` directory.
-
+```bash
+$ composer require partner/rawphp
 ```
-composer require partner/rawPHP "^1.0"
-```
+
+* The second way is that you can just clone this repository into your local machine, then CD into it and run `composer install` in your command line. 
+
+Both methods install RawPHP and all required dependencies. RawPHP requires PHP 5.5.0 or newer.
+
+
 ## Setup the database
 Create a new database in your database manager. Enter the database details in `config/DatabaseConfig.php`. Fill the same details for both of the two database engines even if you will end up loading up one for use.
 In the root folder of the installed RawPHP application, you will see a `rawphp-database.sql` file. Run it in your newly created database.
