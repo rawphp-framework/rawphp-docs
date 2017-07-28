@@ -3,8 +3,8 @@
 This is the official documentation for [RawPHP Framework](https://github.com/rawphp-framework/RawPHP-framework)
 
 ### Tutorials
-  [Build a Sample Blog Application - Written tutorials](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/tutorial/first-app.md)
-  [Build A Powerful Job Recruitment Platform - Video Tutorials](https://www.youtube.com/watch?v=hzRXYrdR4m0&list=PLnBvgoOXZNCM_cxMH8rhLVch_YQbUL5el)
+ * [Build a Sample Blog Application - Written tutorials](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/tutorial/first-app.md)
+ * [Build A Powerful Job Recruitment Platform - Video Tutorials](https://www.youtube.com/watch?v=hzRXYrdR4m0&list=PLnBvgoOXZNCM_cxMH8rhLVch_YQbUL5el)
 
 ### Get Started
   * [Installation](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/installation.md)
