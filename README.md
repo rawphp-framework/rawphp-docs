@@ -11,7 +11,11 @@ This is the official documentation for [RawPHP Framework](https://github.com/raw
   * [Upgrade Guide](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/upgrade.md)
   * [Web Servers](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/web-servers.md)
   * [Deployment](https://github.com/rawphp-framework/RawPHP-docs/docs/deployment/deployment.md)
-  
+### Naming conventions
+ * [Databases](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/naming-conventions.md)
+ * [Models](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/naming-conventions.md)
+  * [Views](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/naming-conventions.md)
+  * [Controllers](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/naming-conventions.md)
 ### Console 
   * [Models](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/console.md)
   * [Controllers](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/start/console.md)
