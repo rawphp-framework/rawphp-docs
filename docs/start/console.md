@@ -47,7 +47,8 @@ to look like this :
         "cakephp/orm": "^3.4",
         "symfony/console": "^3.3"
     },
-    ```
+ 
+ ```
 Finally, run these two commands in your command prompt:
 * `composer install`
 * `composer dump-autoload`
