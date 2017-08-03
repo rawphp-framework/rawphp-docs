@@ -64,7 +64,7 @@ To use the console, you have to open a command prompt from inside the /bin folde
 RawPHP console commands create sample models, views and controller files that you can then modify to suit your purpose, hence saving you lots of time
 
 ## Naming conventions 
-RawPHP follows standard naming conventions, that is, there are certain names you must name your files in other to leverage RawPHP's power:
+RawPHP follows standard naming conventions, that is, there are certain names you must name your files in order to leverage RawPHP's power:
 
 ### Database naming convention
 Your database tables must all be in smallcaps andin plural, multiple words should be joined with an underscore. The below are valid names:
