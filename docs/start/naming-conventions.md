@@ -10,15 +10,15 @@ Your database tables must all be in smallcaps andin plural, multiple words shoul
  
 ### Model naming convention
 Your models must be singular and Capitalized, multiple words are camel cased. Below are examples of corresponding models for the above tables:
- * `CustomerAccount`
- * `Post`
- * `Book`
+ * `CustomerAccount.php`
+ * `Post.php`
+ * `Book.php`
  
 ### Controller naming convention
 Your controller names must be capitalized, plural and must end with the `Controller` suffix. Multiple words are camel cased. Below are examples of corresponding controllers for the above models
- * `CustomerAccountsController`
- * `PostsController`
- * `BooksController`
+ * `CustomerAccountsController.php`
+ * `PostsController.php`
+ * `BooksController.php`
  
 ### Views naming convention
 Your view folder should bear the same name as your database table and must be named in the same way - small caps and plural.
