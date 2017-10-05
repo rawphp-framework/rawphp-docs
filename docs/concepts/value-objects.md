@@ -9,7 +9,7 @@ For example, a RawPHP application can return an instance of `\GuzzleHttp\Psr7\Ca
 returned by the `\GuzzleHttp\Psr7\stream_for()` function.
 
 RawPHP provides its own PSR-7 implementation so that it works out of the box. However,
-you are free to replace Slim's default PSR 7 objects with a third-party implementation.
+you are free to replace RawPHP's default PSR 7 objects with a third-party implementation.
 Just override the application container's `request` and `response` services so
 they return an instance of `\Psr\Http\Message\ServerRequestInterface` and
 `\Psr\Http\Message\ResponseInterface`, respectively.
