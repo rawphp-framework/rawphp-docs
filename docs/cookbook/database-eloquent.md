@@ -19,7 +19,7 @@ Steps:
 
 Specify your database settings `config/DatabaseConfig.php` . Note that Laravel and CakePHP use different settings, to use both of them, just fill the same database details in both. This does not create the connection, so it is advised that you enter the same details in both of them even if you'll eventually use only one of them.
 
-Laravel uses the `DB` by default, CakePHP uses `CakeDB` as the name as specified below:
+Laravel uses the `DB` by default, CakePHP uses `CakeDB` as the name as specified below. For raw sql, you can use `db`:
 
 `config/DatabaseConfig.php`
 
@@ -128,7 +128,7 @@ Here is a sample controller that comes with RawPHP out of the box `app/Controlle
 
 namespace App\Controllers\Auth;
 use App\Controllers\Controller;
-use App\Models\User; <= Import your user model, it already has laravel and cakephp ORM imported
+use App\Models\User; // <= Import your user model, it already has laravel and cakephp ORM imported
 use Respect\Validation\Validator as v; 
 
 class AuthController extends Controller{
