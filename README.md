@@ -71,7 +71,7 @@ This is the official documentation for [RawPHP Framework](https://github.com/raw
   * [Retrieving Current Route](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/cookbook/retrieving-current-route.md)
   * [Using Eloquent with RawPHP](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/cookbook/database-eloquent.md)
   * [Enabling CORS](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/cookbook/enable-cors.md)
-  * [Getting and Mocking the Environment](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/cookbook/emvironment.md)
+  * [Getting and Mocking the Environment](https://github.com/rawphp-framework/rawphp-docs/blob/master/docs/cookbook/environment.md)
   * [Uploading Files using POST forms](https://github.com/rawphp-framework/RawPHP-docs/blob/master/docs/cookbook/uploading-files.md)
   
 ### Add Ons
