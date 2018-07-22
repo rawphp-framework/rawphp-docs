@@ -7,6 +7,8 @@ This article will teach how to set them up, for how to perform different databas
 
 RawPHP comes with Laravel enabled by default, to use CakePHP ORM, you just have to turn it on. You can have both of them turned on at the same time, which means you can write both Cakephp and Laravel ORM in the same controller methods. Awesome, isn't it?
 
+The below covers how to import and use other framework cores such as Laravel and CakePHP. Slim PHP works by default. You can import others following the same guidelines below. 
+For how to run normal (or vanilla) sql queries, see [How to use Raw SQL](https://laravel.com/docs/5.6/database#running-queries)
 
 
 # Adding Laravel Eloquent and CakePHP's ORM to your application
@@ -91,7 +93,7 @@ $capsule->setConfig('default', $container['settings']['cakeDB']);
 ```
 
 ## Import the enabled ORM(s) into your model 
-ere is a sample model setup in `app/Models/User.php`
+Here is a sample model setup in `app/Models/User.php`
 ```
 <?php 
 namespace App\Models;
@@ -177,5 +179,6 @@ foreach ($query as $row) {
 ## More information
 
 Discover more queries you can run :
-* Laravel => [Eloquent](https://laravel.com/docs/5.1/eloquent) Documentation
+* [How to use Raw SQL](https://laravel.com/docs/5.6/database#running-queries)
+* Laravel => [Eloquent Documentation](https://laravel.com/docs/5.1/eloquent) 
 * CakePHP => [CakePHP's ORM](https://book.cakephp.org/3.0/en/orm.html)
